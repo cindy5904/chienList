@@ -32,7 +32,10 @@ public class ChienService extends BaseService implements Repository<Chien> {
 
     @Override
     public Chien findById(int id) {
-        return null;
+        session = sessionFactory.openSession();
+        Chien chien = session.get(Chien.class,id);
+        session.close();
+        return chien;
     }
 
     @Override

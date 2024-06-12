@@ -57,8 +57,9 @@ public class ChienServlet extends HttpServlet {
 
         String idParam = req.getParameter("id");
         System.out.println("ID Paramètre : " + idParam);
-
-
+        int id = Integer.parseInt(idParam);
+        Chien chien = chienService.findById(id);
+        req.setAttribute("chien", chien);
         req.getRequestDispatcher("/WEB-INF/chienDetail.jsp").forward(req, resp);
     }
 
