@@ -29,6 +29,7 @@
                     <th>Nom</th>
                     <th>Race</th>
                     <th>Date de naissance</th>
+                    <th>Détail</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,9 @@
                     <td><%= chiens.get(i).getNom() %></td>
                     <td><%= chiens.get(i).getRace() %></td>
                     <td><%= chiens.get(i).getDateNaissance() %></td>
+                    <td>
+                        <a href="detailChien?id=<%= chiens.get(i).getId() %>" class="btn btn-info">Détails</a>
+                    </td>
                 </tr>
                 <% } %>
                 </tbody>

@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.chienliste.entity.Chien;
+import org.example.chienliste.service.ChienService;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -15,11 +16,11 @@ import java.util.List;
 
 @WebServlet(name = "chienliste", value = {"/listeChien", "/ajoutChien", "/detailChien/*"})
 public class ChienServlet extends HttpServlet {
-    private List<Chien> chiens;
+    private ChienService chienService;
 
     @Override
     public void init() throws ServletException {
-        chiens = new ArrayList<>();
+        chienService = new ChienService();
     }
 
     @Override
@@ -38,11 +39,12 @@ public class ChienServlet extends HttpServlet {
                 afficherDetailChien(req, resp);
                 break;
             default:
-                resp.sendError(400, "Invalid");
+                resp.sendRedirect("erreur");
                 break;
         }
     }
     private void listesChiens(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Chien> chiens = chienService.findAll();
         req.setAttribute("chiens", chiens);
         req.getRequestDispatcher("/WEB-INF/chienListe.jsp").forward(req, resp);
     }
@@ -67,9 +69,9 @@ public class ChienServlet extends HttpServlet {
         LocalDate dateNaissance = LocalDate.parse(req.getParameter("dateNaissance"));
 
         Chien chien = new Chien(nom, race, dateNaissance);
-        chiens.add(chien);
-        req.setAttribute("chiens", chiens);
-
+        chienService.save(chien);
+        req.setAttribute("chiens", chienService);
+        resp.sendRedirect("listeChien");
     }
 
     @Override

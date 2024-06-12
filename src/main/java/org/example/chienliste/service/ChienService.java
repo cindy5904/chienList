@@ -10,15 +10,29 @@ public class ChienService extends BaseService implements Repository<Chien> {
         super();
     }
 
-
     @Override
-    public boolean add(Chien o) {
+    public boolean save(Chien o) {
         session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(o);
         session.getTransaction().commit();
         session.close();
         return true;
+    }
+
+    @Override
+    public boolean update(Chien o) {
+        return false;
+    }
+
+    @Override
+    public boolean delete(Chien o) {
+        return false;
+    }
+
+    @Override
+    public Chien findById(int id) {
+        return null;
     }
 
     @Override
