@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1 class="text-center mt-5 mb-5">Liste des Chiens 🐶</h1>
+
 <main class="container">
     <div class="row my-3">
         <div class="col-8 offset-2 text-bg-dark rounded p-3">
@@ -49,6 +49,7 @@
             <% } else { %>
             <p>La liste de chien est vide 🫨🫨🫨</p>
             <% }  %>
+            <a href="ajoutChien" class="btn btn-secondary text-center"> ➕ Ajoute un chien</a>
         </div>
     </div>
 </main>

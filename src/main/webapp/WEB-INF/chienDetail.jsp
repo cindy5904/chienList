@@ -38,10 +38,7 @@
                         <td><%=  ((Chien) request.getAttribute("chien")).getNom() %></td>
                         <td><%=  ((Chien) request.getAttribute("chien")).getRace()  %></td>
                         <td><%= ((Chien) request.getAttribute("chien")).getDateNaissance() %></td>
-
                     </tr>
-
-
                     </tbody>
                 </table>
                 <a href="listeChien" class="btn btn-secondary text-center">Retour à la liste</a>
