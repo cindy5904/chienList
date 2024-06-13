@@ -1,4 +1,4 @@
-<%--
+<%@ page import="org.example.chienliste.entity.Chien" %><%--
   Created by IntelliJ IDEA.
   User: telci
   Date: 12/06/2024
@@ -15,7 +15,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <main class="container">
     <div class="row my-3 pt-5">
         <div class="col-8 offset-2 text-bg-dark rounded p-3">
@@ -33,14 +32,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <% for (int i = 0; i < chiens.size();i++) { %>
+                <% for (Chien c : chiens ) { %>
+
                 <tr>
-                    <td><%= i+1 %></td>
-                    <td><%= chiens.get(i).getNom() %></td>
-                    <td><%= chiens.get(i).getRace() %></td>
-                    <td><%= chiens.get(i).getDateNaissance() %></td>
+                    <td><%= c.getId() %></td>
+                    <td><%= c.getNom() %></td>
+                    <td><%= c.getRace() %></td>
+                    <td><%= c.getDateNaissance() %></td>
                     <td>
-                        <a href="detailChien?id=<%= chiens.get(i).getId() %>" class="btn btn-info">Détails</a>
+                        <a href="detailChien?id=<%= c.getId() %>" class="btn btn-info">Détails</a>
                     </td>
                 </tr>
                 <% } %>

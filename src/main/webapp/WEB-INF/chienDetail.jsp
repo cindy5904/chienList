@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<jsp:useBean id="chien" type="org.example.chienliste.entity.Chien" scope="request"/>
 <html>
 <head>
     <title>Title</title>
@@ -33,11 +33,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <%
+                        Chien c = (Chien) request.getAttribute("chien");
+                    %>
                     <tr>
-                        <td></td>
-                        <td><%=  ((Chien) request.getAttribute("chien")).getNom() %></td>
-                        <td><%=  ((Chien) request.getAttribute("chien")).getRace()  %></td>
-                        <td><%= ((Chien) request.getAttribute("chien")).getDateNaissance() %></td>
+                        <td><%= c.getId() %></td>
+                        <td><%=  c.getNom() %></td>
+                        <td><%=  c.getRace()  %></td>
+                        <td><%= c.getDateNaissance() %></td>
                     </tr>
                     </tbody>
                 </table>
